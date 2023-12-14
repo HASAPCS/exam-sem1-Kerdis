@@ -34,8 +34,18 @@ public class FuelDepot {
     // Method to implement for b)
     public void moveToLocation(int locIndex) {
         // Your implementation here
+        if (this.filler.getCurrentIndex() > locIndex) {
+            if(this.filler.isFacingRight()) {
+                this.filler.changeDirection();
+            }
+            this.filler.moveForward(this.filler.getCurrentIndex() - locIndex);
+        }
+
         if (this.filler.getCurrentIndex() < locIndex) {
-            moveToLocation(locIndex);
-        } 
+            if(this.filler.isFacingRight()) {
+                this.filler.changeDirection();
+            }
+            this.filler.moveForward(locIndex - this.filler.getCurrentIndex());
+        }
     }
 }
